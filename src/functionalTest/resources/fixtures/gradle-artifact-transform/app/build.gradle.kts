@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-  mainClass.set("com.company.Main")
+  mainClass = "com.company.Main"
 }
 
 dependencies {
@@ -16,7 +16,8 @@ val transformedAttribute = Attribute.of("custom-transformed", Boolean::class.jav
 dependencies.artifactTypes.maybeCreate("jar").attributes.attribute(transformedAttribute, false)
 
 dependencies.registerTransform(CustomTransformAction::class) {
-  from.attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, "jar").attribute(transformedAttribute, false)
+  from.attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, "jar")
+    .attribute(transformedAttribute, false)
   to.attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, "jar").attribute(transformedAttribute, true)
 }
 
