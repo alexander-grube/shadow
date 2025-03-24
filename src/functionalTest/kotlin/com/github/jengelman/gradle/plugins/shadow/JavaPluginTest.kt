@@ -679,9 +679,10 @@ class JavaPluginTest : BasePluginTest() {
       overwrite = true,
     )
 
+    run(":lib:jar")
     run(":app:$SHADOW_JAR_TASK_NAME")
 
-    assertThat(jarPath("app/build/libs/app-1.0-all.jar")).useAll {
+    assertThat(jarPath("app/build/libs/app-all.jar")).useAll {
       containsAtLeast(
         "com/company/Main.class",
         "com/company/Utils.class",
